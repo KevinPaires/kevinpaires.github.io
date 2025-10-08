@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QA Engineer Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Verdana, Arial, sans-serif; background: #f3f4f8; margin: 0; }
+        header { background: #334982; color: #fff; padding: 1.5rem; text-align: center; }
+        .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 8px; padding: 2rem; box-shadow: 0 4px 16px rgba(51,73,130,0.08);}
+        h1, h2 { color: #334982; }
+        ul { line-height: 1.65; }
+        .project { margin-bottom: 2rem; }
+        .btn { background: #334982; color: #fff; padding: .5rem 1rem; border-radius: 5px; border: none; text-decoration: none; font-weight: bold; }
+        .btn:hover { background: #d7dc5c; color: #334982; }
+        footer { text-align: center; margin-top: 3rem; padding: 1rem; background: #e9e9ef; color: #334982;}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Kevin Paires — QA Engineer Portfolio</h1>
+        <p>Test Automation | Manual Testing | Selenium | Python | CI/CD</p>
+    </header>
+    <div class="container">
+        <section>
+            <h2>About Me</h2>
+            <p>
+                QA Engineer passionate about building test automation, finding bugs, and advocating for software quality. Experience in Python, Selenium, and more.
+            </p>
+        </section>
+        <section>
+            <h2>Skills</h2>
+            <ul>
+                <li>Test Automation (Selenium, Pytest)</li>
+                <li>Manual and Exploratory Testing</li>
+                <li>Bug Reporting (JIRA)</li>
+                <li>Python, JavaScript, HTML/CSS</li>
+                <li>CI/CD (Jenkins, GitHub Actions)</li>
+                <li>API Testing (Postman)</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>QA Automation: OrangeHRM</h3>
+                <p>Automated test suite for OrangeHRM HR workflows. Validates login and core form processes.</p>
+                <a class="btn" href="https://github.com/KevinPaires/QA_Automation_OrangeHRM" target="_blank">View Project</a>
+            </div>
+            <!-- Add your own projects similarly here -->
+        </section>
+        <section>
+            <h2>Contact</h2>
+            <p>
+                Email: kevin.paires@email.com<br>
+                LinkedIn: <a href="https://www.linkedin.com/in/kevinpaires" target="_blank">kevinpaires</a>
+            </p>
+        </section>
+    </div>
+    <footer>
+        &copy; 2025 Kevin Paires
+    </footer>
+    <script>
+        // Simple JS animation for header
+        document.querySelector('h1').style.opacity = 0;
+        setTimeout(function() {
+            document.querySelector('h1').style.transition = 'opacity 2s';
+            document.querySelector('h1').style.opacity = 1;
+        }, 150);
+    </script>
+</body>
+</html>
