@@ -178,11 +178,17 @@
 		.car-btn{
 			position:absolute; z-index: 999; top:50%; transform:translateY(-50%);
 			width:80px; height:80px; border-radius:999px;
-			border:1px solid var(--line); background:#fff; color:var(--text);
-			box-shadow: var(--shadow-sm); display:grid; place-items:center; cursor:pointer; opacity:.98;
+			border:1px solid rgba(0,0,0,.08);  /* Subtle border */
+			background:rgba(255,255,255,.3);  /* Light grey transparent */
+			color:var(--text);
+			box-shadow: none;
+			display:grid; place-items:center; cursor:pointer; 
 			transition: background .15s, color .15s, border-color .15s;
+			}
+		.car-btn:hover{ 
+			background:#e5e7eb;  /* Solid grey on hover */
+			border-color:#d1d5db; 
 		}
-		.car-btn:hover{ background:#e5e7eb; border-color:#d1d5db; }
 		.car-btn.prev{ left: calc(var(--edge-gutter) - 6px); }
 		.car-btn.next{ right: calc(var(--edge-gutter) - 6px); }
 		.car-btn svg{ width:28px; height:28px; }
@@ -221,22 +227,6 @@
 			<p class="section-intro">
 				Quality and trust go hand in hand. As a QA Engineer, every test, script, and process is designed to uphold reliability and compliance. With a background rooted in accuracy and documentation, I bring a careful, methodical approach to validation and automation—helping teams deliver software users can trust.
 			</p>
-		</section>
-
-		<section aria-labelledby="stack">
-			<h2 id="stack">Tech stack</h2>
-			<ul class="skills" role="list">
-				<li>Test Automation · Selenium · Playwright</li>
-				<li>Manual Testing</li>
-				<li>Bug Reporting · JIRA</li>
-				<li>JavaScript · HTML · CSS</li>
-				<li>SQL</li>
-				<li>API Testing · Postman · REST</li>
-				<li>Python</li>
-				<li>Android Studio Emulator</li>
-				<li>Git · GitHub</li>
-				<li>CI/CD · GitHub Actions</li>
-			</ul>
 		</section>
 
 		<section aria-labelledby="projects">
@@ -329,6 +319,27 @@
 				</button>
 			</div>
 		</section>
+
+
+		<section aria-labelledby="stack">
+			<h2 id="stack">Tech stack</h2>
+			<ul class="skills" role="list">
+				<li>Manual & Automated Testing</li>
+				<li>Playwright</li>
+				<li>Selenium</li>
+				<li>PyTest</li>
+				<li>Bug Reporting · JIRA</li>
+				<li>JavaScript · HTML · CSS</li>
+				<li>SQL</li>
+				<li>API Testing · Postman · REST</li>
+				<li>Python</li>
+				<li>Android Studio Emulator</li>
+				<li>Git · GitHub</li>
+				<li>CI/CD · GitHub Actions</li>
+			</ul>
+		</section>
+
+		
 
 		<section id="contact" aria-labelledby="contact-title">
 			<h2 id="contact-title">Get in touch</h2>
