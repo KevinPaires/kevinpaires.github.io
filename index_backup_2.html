@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kevin Paires - QA Engineer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body { 
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; 
+            background: linear-gradient(135deg, #6E07F3 0%, #6E07F3 50%, #6E07F3 100%);
+            margin: 0;
+            min-height: 100vh;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #fcfcfc 0%, #ffffff 50%, #ffffff 100%);
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgb(255, 255, 255) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgb(255, 255, 255) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 90%, rgb(255, 255, 255) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1; /* optional, keep it behind content */
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 465;
+            margin-bottom: 1.5rem;
+            color: #0e0d0d; 
+            font-family: 'Michroma', sans-serif; 
+        
+            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+            
+        
+            letter-spacing: -0.03em;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.7rem;
+            font-weight: 400;
+            color: #010303;
+            font-family: 'Michroma', sans-serif;  
+            margin-bottom: 2rem;
+            letter-spacing: 0.3px;
+            
+                         
+        }
+        
+        .hero .description {
+            font-size: 1.2rem;
+            color: rgba(2, 1, 1, 0.9);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-weight: 300;
+            line-height: 1.7;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #7c77c6, #ff77c6);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(124, 119, 198, 0.4);
+            border: 2px solid transparent;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(124, 119, 198, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .container { 
+            max-width: 1100px; 
+            margin: -3rem auto 2rem; 
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 32px; 
+            padding: 4rem; 
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            color: #2d3748;
+            position: relative;
+            z-index: 3;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        h2 { 
+            color: #2d3748; 
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            position: relative;
+            text-align: center;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #7c77c6, #ff77c6);
+            border-radius: 2px;
+        }
+        
+        section {
+            margin-bottom: 4rem;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .skills-grid { 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            list-style: none;
+            margin-top: 2rem;
+        }
+        
+        .skills-grid li {
+            background: linear-gradient(135deg, #f7fafc, #edf2f7);
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            font-weight: 500;
+            color: #2d3748;
+            border-left: 5px solid #7c77c6;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skills-grid li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(124, 119, 198, 0.2);
+            border-left-color: #ff77c6;
+        }
+        
+        .skills-grid li::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #7c77c6, #ff77c6);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .skills-grid li:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .project { 
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            margin-bottom: 2.5rem; 
+            padding: 3rem;
+            border-radius: 24px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #7c77c6, #ff77c6, #78dbe2);
+        }
+        
+        .project:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .project h3 {
+            color: #1a202c;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .project p {
+            color: #4a5568;
+            margin-bottom: 2rem;
+            text-align: left;
+            line-height: 1.7;
+        }
+        
+        .btn { 
+            background: linear-gradient(135deg, #7c77c6, #ff77c6);
+            color: #fff; 
+            padding: 1rem 2.5rem; 
+            border-radius: 50px; 
+            border: none; 
+            text-decoration: none; 
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(124, 119, 198, 0.3);
+        }
+        
+        .btn:hover { 
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(124, 119, 198, 0.5);
+            background: linear-gradient(135deg, #6b66b3, #e666b3);
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #0f0f23, #1a1a2e);
+            color: white;
+            padding: 3rem;
+            border-radius: 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(124, 119, 198, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .contact-section h2 {
+            color: white;
+        }
+        
+        .contact-section h2::after {
+            background: linear-gradient(90deg, #ffffff, #78dbe2);
+        }
+        
+        .contact-info {
+            position: relative;
+            z-index: 2;
+            margin-top: 2rem;
+        }
+        
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .contact-info a {
+            color: #fafafa;
+            text-decoration: none;
+            font-weight: 130;
+            transition: color 0.2s ease;
+        }
+        
+        .contact-info a:hover {
+            color: #e9dbdb;
+        }
+        
+        footer { 
+            text-align: center; 
+            margin-top: 3rem; 
+            padding: 2rem; 
+            background: rgba(15, 15, 35, 0.8);
+            backdrop-filter: blur(10px);
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero .description {
+                font-size: 1.1rem;
+            }
+            
+            .container {
+                margin: -2rem 1rem 2rem;
+                padding: 2.5rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project {
+                padding: 2rem;
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in">Hello there, I'm Kevin</h1>
+            <p class="subtitle fade-in delay-1">QA Engineer / QA Specialist</p>
+            <p class="description fade-in delay-2">
+                Making software bulletproof.
+            </p>
+            <a href="#contact" class="cta-button fade-in delay-3">Get In Touch</a>
+        </div>
+    </section>
+    
+    <div class="container fade-in delay-4">
+        <section>
+            <h2>About Me</h2>
+            <p>
+                Quality and trust go hand in hand. As a QA Engineer, I ensure every test, script, and process upholds the standards that keep software reliable and compliant. With a background rooted in accuracy and documentation, I bring a careful, methodical approach to validation and automation—helping teams deliver software users can trust.
+            </p>
+        </section>
+        
+        <section>
+            <h2>Tech Stack</h2>
+            <ul class="skills-grid">
+                <li>Test Automation (Selenium, Playwright)</li>
+                <li>Manual Testing</li>
+                <li>Bug Reporting & Tracking (JIRA)</li>
+                <li>JavaScript, HTML/CSS</li>
+                <li>SQL</li>
+                <li>API Testing (Postman, REST)</li>
+                <li>Python</li>
+                <li>Android Studio Emulator</li>
+                <li>Git/Github</li>
+                <li>CI/CD (Github Actions)</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Featured Projects</h2>
+            <div class="project">
+                <h3>Selenium Automation: OrangeHRM</h3>
+                <p>Comprehensive automated test suite for OrangeHRM HR workflows. Features boundary value testing, password strength validation, and full CRUD operations testing using Page Object Model architecture with strategic wait handling for UI challenges.</p>
+                <a class="btn" href="https://github.com/KevinPaires/QA_Automation_OrangeHRM" target="_blank">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Playwright Automation: Open Cart</h3>
+                <p>Built an e-commerce test automation framework using Playwright and JavaScript with Page Object Model, covering search, cart, and checkout workflows with 15+ automated tests.</p>
+                <a class="btn" href="https://github.com/KevinPaires/Playwright_Open_Cart_Automation" target="_blank">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Selenium Automation: Urban Routes</h3>
+                <p>Automated testing framework for Urban Routes application. Validates critical user journeys, form submissions, and automated key functionalities ensure a smooth user experience.</p>
+                <a class="btn" href="https://github.com/KevinPaires/Urban_Routes_Test_Automation" target="_blank">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Manual/Mobile/API Testing: Urban Scooter</h3>
+                <p>Performed end-to-end QA testing for a rental scooter application. Validated backend APIs in Postman, executed mobile tests in Android Studio, and delivered clear bug reports in Jira.</p>
+                <a class="btn" href="https://github.com/KevinPaires/Urban_Scooter_Test_Cases" target="_blank">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Automated API Tests: JSON Placeholder Website</h3>
+                <p>Tested all HTTP methods (GET, POST, PUT, PATCH, DELETE), verified response status codes, JSON data structure, and data integrity across various RESTful operations.</p>
+                <a class="btn" href="https://github.com/KevinPaires/JSONplaceholder_API_Tests" target="_blank">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Test Cases: Urban Grocers</h3>
+                <p>Tested delivery endpoints using XML data format and product validation endpoints using JSON. Documented all test cases in Excel, performed API testing in Postman, and reported bugs in JIRA.</p>
+                <a class="btn" href="https://github.com/KevinPaires/Urban_Grocers_API" target="_blank">View Project</a>
+            </div>
+        </section>
+        
+        <section id="contact" class="contact-section">
+            <h2>Get In Touch</h2>
+            <div class="contact-info">
+                <p><strong>Email:</strong> <a href="mailto:kpaires2021@gmail.com">kpaires2021@gmail.com</a></p>
+                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kevin-paires/" target="_blank">linkedin.com/kevin-paires</a></p>
+                <p><strong>GitHub:</strong> <a href="https://github.com/KevinPaires" target="_blank">github.com/KevinPaires</a></p>
+                <p><strong>YouTube:</strong> <a href="https://www.youtube.com/@KevinPaires" target="_blank">youtube.com/@KevinPaires</a></p>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        &copy; 2025 Kevin Paires - Quality Assurance Engineer
+    </footer>
+    
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add fade-in animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        
+        // Enhanced project hover effects
+        document.querySelectorAll('.project').forEach(project => {
+            project.addEventListener('mouseenter', () => {
+                project.style.transform = 'translateY(-10px)';
+            });
+            
+            project.addEventListener('mouseleave', () => {
+                project.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
