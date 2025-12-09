@@ -391,6 +391,9 @@
 
 			let isDown = false, startX = 0, startScroll = 0, startTime = 0, lastX = 0;
 			track.addEventListener('pointerdown', e => {
+				// Allow links to work - don't start dragging if clicking on a link
+				if (e.target.closest('a')) return;
+				
 				isDown = true;
 				startX = e.clientX;
 				startScroll = track.scrollLeft;
