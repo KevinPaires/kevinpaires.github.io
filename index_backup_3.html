@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Kevin Paires — QA Engineer</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet" />
+	<style>
+		* { box-sizing: border-box; }
+		html, body { margin: 0; padding: 0; }
+
+		:root{
+			--bg: #fff;
+			--text: #0b0c0e;
+			--muted: #5c6672;
+			--line: #e8ebef;
+			--chip: #f6f8fa;
+			--radius-lg: 16px;
+			--radius-sm: 8px;
+			--shadow-sm: 0 1px 2px rgba(0,0,0,.04);
+			--space-1: .5rem;
+			--space-2: .75rem;
+			--space-3: 1rem;
+			--space-4: 1.5rem;
+			--space-5: 2rem;
+			--space-6: 3rem;
+			--maxw: 1100px;
+			--edge-gutter: 12px;
+		}
+
+		body{
+			font-family: 'Inter','Poppins',-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+			background: var(--bg);
+			color: var(--text);
+			line-height: 1.6;
+			font-size: 16px;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+
+		.wrapper{ max-width: var(--maxw); margin: 0 auto; padding: 0 var(--space-3); }
+
+		/* Header (two-column: name left, meta right) */
+		header{ padding: var(--space-6) 0 var(--space-5); }
+		.hero{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			align-items: end;
+			column-gap: var(--space-3);
+			border-bottom: 1px solid var(--line);
+			padding-bottom: var(--space-5);
+		}
+		/* Left column: name */
+		.hero-left{
+			text-align: left;
+		}
+		h1{
+			font-size: clamp(2rem, 4vw, 3rem);
+			line-height: 1.15;
+			letter-spacing: -0.02em;
+			margin: 0;
+			font-weight: 800; /* bold title */
+		}
+		/* Right column: role + tagline + CTA aligned right */
+		.hero-right{
+			text-align: right;
+			display: grid;
+			justify-items: end;
+			row-gap: .5rem;
+		}
+		.subtitle{ color: black; font-size: 1.125rem; font-weight: 700; }
+		.lead{ max-width: 60ch; color: var(--muted); }
+		.cta{
+			display: inline-block; margin-top: var(--space-2); padding: .75rem 1rem;
+			border: 1px solid var(--line); border-radius: 999px; text-decoration: none;
+			color: var(--text); background: #fff; box-shadow: var(--shadow-sm);
+			transition: background .2s, transform .08s;
+		}
+		.cta:hover{ background:#f8fafc; transform: translateY(-1px); }
+
+		/* Stack on small screens */
+		@media (max-width: 720px){
+			.hero{ grid-template-columns: 1fr; row-gap: var(--space-3); }
+			.hero-right{ justify-items: start; text-align: left; }
+			.lead{ max-width: 100%; }
+		}
+
+		section{ padding: var(--space-5) 0; border-bottom: 1px solid var(--line); }
+		section:last-of-type{ border-bottom: none; }
+		h2{ font-size: 1.5rem; margin: 0 0 var(--space-3); letter-spacing: -0.01em; text-align: center; }
+		p.section-intro{ color: var(--muted); max-width: 65ch; margin: 0 auto var(--space-4); text-align: center; }
+
+		.skills{
+			display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+			gap: var(--space-2); list-style: none; padding: 0; margin: 0 auto; max-width: 900px;
+		}
+		.skills li{
+			background: var(--chip); border: 1px solid var(--line); border-radius: var(--radius-sm);
+			padding: .65rem .75rem; font-weight: 500; color: #1b1f24; text-align: center;
+		}
+
+		/* Carousel (edge-to-edge, no blur; 2x larger cards) */
+		.carousel{ position: relative; margin-top: var(--space-3); }
+		.car-outer{
+			width: calc(100vw - 2 * var(--edge-gutter));
+			margin-left: calc(50% - 50vw + var(--edge-gutter));
+			margin-right: calc(50% - 50vw + var(--edge-gutter));
+			display: flex; justify-content: center;
+		}
+		.car-track{
+			display: grid; grid-auto-flow: column;
+			grid-auto-columns: minmax(560px, 760px);
+			gap: var(--space-3);
+			overflow-x: auto; padding: var(--space-2);
+			scroll-snap-type: x mandatory;
+			-webkit-overflow-scrolling: touch;
+			border-radius: 0;
+			mask: none; -webkit-mask: none;
+		}
+		@media (min-width: 1280px){
+			.car-track{ grid-auto-columns: minmax(660px, 880px); }
+		}
+
+		.card{
+			scroll-snap-align: start;
+			border: 1px solid var(--line);
+			border-radius: var(--radius-lg);
+			background: #fff;
+			box-shadow: var(--shadow-sm);
+			overflow: hidden;
+			display: grid;
+		}
+		.thumb{
+			aspect-ratio: 16/10;
+			background: linear-gradient(180deg,#fafbfc,#f2f4f7);
+			display: grid; place-items: center; position: relative; user-select: none;
+			overflow: hidden;
+		}
+		.thumb-dark{ background: #0b0c0e; }
+		.thumb::before{
+			content:""; width:70%; aspect-ratio:4/3; border-radius:18px;
+			background: radial-gradient(120% 120% at 60% 40%, rgba(0,0,0,.04) 0 60%, transparent 61%),
+			            linear-gradient(180deg,#fff,#f2f4f7);
+			box-shadow: inset 0 0 0 1px rgba(0,0,0,.04), 0 10px 22px rgba(0,0,0,.06);
+		}
+		.thumb-dark::before{
+			background: linear-gradient(180deg,#15181c,#0f1114);
+			box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 10px 24px rgba(0,0,0,.5);
+		}
+		.thumb img{ 
+			width: 100%; 
+			height: 100%; 
+			object-fit: cover;
+			object-position: center;
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.thumb img[src]:not([src=""]){ display:block; }
+		.thumb-title{
+			position:absolute; bottom:12px; left:12px;
+			padding:.45rem .7rem; background:rgba(255,255,255,.78);
+			border:1px solid var(--line); color:#111; font-size:.9rem; border-radius:10px; backdrop-filter:blur(6px);
+			z-index: 10;
+		}
+		.card-body{ padding:1.15rem 1.15rem 1.25rem; }
+		.card-body p{ color:var(--muted); margin:.4rem 0 1rem; }
+		.btn{
+			display:inline-block; font-size:.98rem; font-weight:600; padding:.65rem .9rem;
+			border:1px solid var(--line); border-radius:10px; text-decoration:none; color:var(--text); background:#fff;
+			transition: background .2s;
+		}
+		.btn:hover{ background:#f0f2f5; }
+
+		.car-btn{
+			position:absolute; z-index: 999; top:50%; transform:translateY(-50%);
+			width:80px; height:80px; border-radius:999px;
+			border:1px solid rgba(0,0,0,.08);  /* Subtle border */
+			background:rgba(255,255,255,.3);  /* Light grey transparent */
+			color:var(--text);
+			box-shadow: none;
+			display:grid; place-items:center; cursor:pointer; 
+			transition: background .15s, color .15s, border-color .15s;
+			}
+		.car-btn:hover{ 
+			background:#e5e7eb;  /* Solid grey on hover */
+			border-color:#d1d5db; 
+		}
+		.car-btn.prev{ left: calc(var(--edge-gutter) - 6px); }
+		.car-btn.next{ right: calc(var(--edge-gutter) - 6px); }
+		.car-btn svg{ width:28px; height:28px; }
+		@media (max-width: 640px){ .car-btn{ display:none; } }
+
+		.dragging{ cursor: grabbing; }
+		.dragging *{ pointer-events: none; }
+
+		.contact{ display:grid; gap:.5rem; justify-items:center; }
+		.contact a{ color:var(--text); text-decoration:none; border-bottom:1px dashed transparent; transition:border-color .15s, color .15s; }
+		.contact a:hover{ color:#111; border-color:var(--line); }
+		.contact-row{ display:flex; gap:.5rem; align-items:baseline; color:var(--muted); }
+		.contact-row b{ color:var(--text); min-width:88px; font-weight:600; }
+
+		footer{ padding: var(--space-5) 0; color: var(--muted); font-size:.95rem; text-align:center; }
+		@media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+	</style>
+</head>
+<body>
+	<header>
+		<div class="wrapper hero">
+			<div class="hero-left">
+				<h1>Kevin Paires</h1>
+			</div>
+			<div class="hero-right">
+				<div class="subtitle">QA Engineer / QA Specialist</div>
+				<p class="lead">Making software bulletproof through thoughtful validation, clear documentation, and reliable automation.</p>
+				<a class="cta" href="#contact" aria-label="Jump to contact">Get in touch</a>
+			</div>
+		</div>
+	</header>
+
+	<main class="wrapper">
+		<section aria-labelledby="about">
+			<h2 id="about">About me</h2>
+			<p class="section-intro">
+				Quality and trust are at the heart of everything I do. As a QA Engineer, I focus on building confidence in every release through precise testing, reliable automation, and clear documentation. My methodical approach ensures that products not only meet requirements but exceed user expectations for reliability and performance. This journey has not been easy, but every challenge has strengthened my determination, sharpened my skills, and deepened my passion for delivering software users can truly rely on.
+			</p>
+		</section>
+
+		<section aria-labelledby="projects">
+			<h2 id="projects">Featured projects</h2>
+
+			<div class="carousel" aria-label="Projects">
+				<button class="car-btn prev" aria-label="Scroll left">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 4.5L8 12l7.5 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+				</button>
+
+				<div class="car-outer">
+					<div class="car-track" tabindex="0">
+						<!-- Cards unchanged from previous version -->
+						<article class="card">
+							<div class="thumb thumb-dark">
+								<img alt="OrangeHRM screenshot" src="images/orangehrm.jpeg">
+								<div class="thumb-title">OrangeHRM</div>
+							</div>
+							<div class="card-body">
+								<h3>Selenium Automation · OrangeHRM</h3>
+								<p>Automated HR workflows with POM, boundary value tests, and CRUD coverage.</p>
+								<a class="btn" href="https://github.com/KevinPaires/QA_Automation_OrangeHRM" target="_blank" rel="noopener">View project</a>
+							</div>
+						</article>
+
+						<article class="card">
+							<div class="thumb">
+								<img alt="OpenCart screenshot" src="images/opercart.jpeg">
+								<div class="thumb-title">OpenCart</div>
+							</div>
+							<div class="card-body">
+								<h3>Playwright Automation · OpenCart</h3>
+								<p>E‑commerce flows in Playwright and JS: search, cart, checkout, 15+ tests.</p>
+								<a class="btn" href="https://github.com/KevinPaires/Playwright_Open_Cart_Automation" target="_blank" rel="noopener">View project</a>
+							</div>
+						</article>
+
+						<article class="card">
+							<div class="thumb thumb-dark">
+								<img alt="Urban Routes screenshot" src="images/urbanroutes.jpeg">
+								<div class="thumb-title">Urban Routes</div>
+							</div>
+							<div class="card-body">
+								<h3>Selenium Automation · Urban Routes</h3>
+								<p>End‑to‑end UI coverage for critical user journeys and form validations.</p>
+								<a class="btn" href="https://github.com/KevinPaires/Urban_Routes_Test_Automation" target="_blank" rel="noopener">View project</a>
+							</div>
+						</article>
+
+						<article class="card">
+							<div class="thumb">
+								<img alt="Urban Scooter screenshot" src="images/urbanscooter.jpeg">
+								<div class="thumb-title">Urban Scooter</div>
+							</div>
+							<div class="card-body">
+								<h3>Manual · Mobile · API Testing · Urban Scooter</h3>
+								<p>Postman API validation, Android Studio tests, and Jira bug reports.</p>
+								<a class="btn" href="https://github.com/KevinPaires/Urban_Scooter_Test_Cases" target="_blank" rel="noopener">View project</a>
+							</div>
+						</article>
+
+						<article class="card">
+							<div class="thumb thumb-dark">
+								<img alt="JSONPlaceholder screenshot" src="images/jsonplaceholder.jpeg">
+								<div class="thumb-title">JSONPlaceholder</div>
+							</div>
+							<div class="card-body">
+								<h3>Automated API Tests · JSONPlaceholder</h3>
+								<p>GET, POST, PUT, PATCH, DELETE with status and schema checks.</p>
+								<a class="btn" href="https://github.com/KevinPaires/JSONplaceholder_API_Tests" target="_blank" rel="noopener">View project</a>
+							</div>
+						</article>
+
+						<article class="card">
+							<div class="thumb">
+								<img alt="Urban Grocers screenshot" src="images/urbangrocers.jpeg">
+								<div class="thumb-title">Urban Grocers</div>
+							</div>
+							<div class="card-body">
+								<h3>Test Cases · Urban Grocers</h3>
+								<p>XML delivery endpoints, JSON product validation, cases in Excel.</p>
+								<a class="btn" href="https://github.com/KevinPaires/Urban_Grocers_API" target="_blank" rel="noopener">View project</a>
+							</div>
+						</article>
+					</div>
+				</div>
+
+				<button class="car-btn next" aria-label="Scroll right">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4.5L16 12l-7.5 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+				</button>
+			</div>
+		</section>
+
+
+		<section aria-labelledby="stack">
+			<h2 id="stack">Tech stack</h2>
+			<ul class="skills" role="list">
+				<li>Manual & Automated Testing</li>
+				<li>Playwright</li>
+				<li>Selenium</li>
+				<li>PyTest</li>
+				<li>Bug Reporting · JIRA</li>
+				<li>JavaScript · HTML · CSS</li>
+				<li>SQL</li>
+				<li>API Testing · Postman · REST</li>
+				<li>Python</li>
+				<li>Android Studio Emulator</li>
+				<li>Git · GitHub</li>
+				<li>CI/CD · GitHub Actions</li>
+			</ul>
+		</section>
+
+		
+
+		<section id="contact" aria-labelledby="contact-title">
+			<h2 id="contact-title">Get in touch</h2>
+			<div class="contact">
+				<div class="contact-row"><b>Email</b><a href="mailto:kpaires2021@gmail.com">kpaires2021@gmail.com</a></div>
+				<div class="contact-row"><b>LinkedIn</b><a href="https://www.linkedin.com/in/kevin-paires/" target="_blank" rel="noopener">linkedin.com/kevin-paires</a></div>
+				<div class="contact-row"><b>GitHub</b><a href="https://github.com/KevinPaires" target="_blank" rel="noopener">github.com/KevinPaires</a></div>
+				<div class="contact-row"><b>YouTube</b><a href="https://www.youtube.com/@KevinPaires" target="_blank" rel="noopener">youtube.com/@KevinPaires</a></div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="wrapper">
+		&copy; 2025 Kevin Paires — Quality Assurance Engineer
+	</footer>
+
+	<script>
+	(() => {
+		const carousels = document.querySelectorAll('.carousel');
+
+		carousels.forEach(carousel => {
+			const track = carousel.querySelector('.car-track');
+			const prev = carousel.querySelector('.prev');
+			const next = carousel.querySelector('.next');
+			const gap = parseFloat(getComputedStyle(track).gap) || 16;
+
+			const firstCard = () => track.querySelector('.card');
+			const cw = () => {
+				const fc = firstCard();
+				return fc ? fc.getBoundingClientRect().width + gap : 760 + gap;
+			};
+			const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
+			const maxScroll = () => Math.max(track.scrollWidth - track.clientWidth, 0);
+
+			function goToIndex(i){
+				const dest = clamp(i * cw(), 0, maxScroll());
+				track.scrollTo({ left: dest, behavior: 'smooth' });
+			}
+			function currentIndex(){ return Math.round(track.scrollLeft / cw()); }
+			function step(n){ goToIndex(currentIndex() + n); }
+
+			prev.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); step(-1); });
+			next.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); step(1); });
+
+			track.addEventListener('keydown', e => {
+				if (e.key === 'ArrowRight'){ e.preventDefault(); step(1); }
+				if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+			});
+
+			let isDown = false, startX = 0, startScroll = 0, startTime = 0, lastX = 0;
+			track.addEventListener('pointerdown', e => {
+				// Allow links to work - don't start dragging if clicking on a link
+				if (e.target.closest('a')) return;
+				
+				isDown = true;
+				startX = e.clientX;
+				startScroll = track.scrollLeft;
+				startTime = performance.now();
+				lastX = e.clientX;
+				track.classList.add('dragging');
+				track.setPointerCapture(e.pointerId);
+			});
+			track.addEventListener('pointermove', e => {
+				if (!isDown) return;
+				track.scrollLeft = startScroll - (e.clientX - startX);
+				lastX = e.clientX;
+			});
+			const end = () => {
+				if (!isDown) return;
+				const dt = Math.max(performance.now() - startTime, 1);
+				const vx = (lastX - startX) / dt;
+				const inertia = vx * 260;
+				const target = clamp(track.scrollLeft - inertia, 0, maxScroll());
+				goToIndex(Math.round(target / cw()));
+				isDown = false;
+				track.classList.remove('dragging');
+			};
+			track.addEventListener('pointerup', end);
+			track.addEventListener('pointercancel', end);
+
+			track.querySelectorAll('img').forEach(img => img.setAttribute('draggable','false'));
+		});
+	})();
+	</script>
+</body>
+</html>
